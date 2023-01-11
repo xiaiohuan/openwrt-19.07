@@ -1,18 +1,21 @@
 ## 拉取
+
 1. 下载源代码，更新 feeds 并选择配置
 
-   ```bash
-   git clone --depth=1 https://github.com/yuos-bit/openwrt-19.07
-   # 拉取最新分支
-   git clone -b xiaomi --single-branch https://github.com/yuos-bit/openwrt-19.07
-   # 拉取小米适配分支
+
+```bash
+git clone --depth=1 https://github.com/yuos-bit/openwrt-19.07
+# 拉取最新分支
+git clone -b xiaomi --single-branch https://github.com/yuos-bit/openwrt-19.07
+# 拉取小米适配分支
   
-   cd openwrt-19.07
-   ./scripts/feeds update -a
-   ./scripts/feeds install -a
-   make menuconfig
-   ```  
-   
+cd openwrt-19.07
+./scripts/feeds update -a
+./scripts/feeds install -a
+make menuconfig
+```  
+
+
  ## 适配说明
  
 
