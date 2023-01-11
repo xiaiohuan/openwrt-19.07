@@ -49,7 +49,8 @@ TARGET_DEVICES += miwifi-3a
 		name="miwifi-3a"
 		;;
 ```
-```shell
+
+
 
 `02_network`修改:
 
