@@ -27,26 +27,27 @@
 
 		led_status_blue: status_blue {
 			label = "blue:status";
-			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
 
 		led_status_red: status_red {
 			label = "red:status";
-			gpios = <&gpio 37 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 37 GPIO_ACTIVE_LOW>;
 		};
 
 		led_status_amber: status_amber {
 			label = "amber:status";
-			gpios = <&gpio 44 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 44 GPIO_ACTIVE_LOW>;
 		};
 	};
 
 	keys {
-		compatible = "gpio-keys";
+		compatible = "gpio-keys-polled";
+		poll-interval = <20>;
 
 		reset {
 			label = "reset";
-			gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 38 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
 		};
 	};
