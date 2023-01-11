@@ -126,6 +126,14 @@ define Device/miwifi-4c
 endef
 TARGET_DEVICES += miwifi-4c
 
+define Device/miwifi-3a
+  DTS := MIWIFI-3A
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := Xiaomi MiWiFi 3a
+  DEVICE_PACKAGES := kmod-mt76x2
+endef
+TARGET_DEVICES += miwifi-3a
+
 define Device/mt7628
   DTS := MT7628
   BLOCKSIZE := 64k
