@@ -118,6 +118,14 @@ define Device/miwifi-nano
 endef
 TARGET_DEVICES += miwifi-nano
 
+define Device/miwifi-4c
+  DTS := MIWIFI-4C
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := Xiaomi MiWiFi 4c
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += miwifi-4c
+
 define Device/mt7628
   DTS := MT7628
   BLOCKSIZE := 64k
