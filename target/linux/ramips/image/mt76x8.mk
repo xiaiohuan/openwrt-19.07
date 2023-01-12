@@ -130,7 +130,7 @@ define Device/miwifi-3a
   DTS := MIWIFI-3A
   IMAGE_SIZE := 15104k
   DEVICE_TITLE := Xiaomi MiWiFi 3a
-  DEVICE_PACKAGES := uboot-envtools kmod-mt76x2
+  DEVICE_PACKAGES := kmod-mt76x2
 endef
 TARGET_DEVICES += miwifi-3a
 
