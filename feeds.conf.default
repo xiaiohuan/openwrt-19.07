@@ -9,4 +9,3 @@ src-git kenzo https://github.com/kenzok8/openwrt-packages.git;master
 src-git small https://github.com/kenzok8/small.git;master
 src-git small8 https://github.com/kenzok8/small-package.git;main
 src-git helloworld https://github.com/fw876/helloworld.git;master
-src-git freifunk https://github.com/freifunk/openwrt-packages.git;openwrt-19.07
