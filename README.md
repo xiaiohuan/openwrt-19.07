@@ -66,7 +66,7 @@ TARGET_DEVICES += miwifi-3a
 `MIWIFI-3A.dts`修改：
 
 ```shell
-// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+//SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 /dts-v1/;
 
 #include "mt7628an.dtsi"
@@ -78,21 +78,21 @@ TARGET_DEVICES += miwifi-3a
 	compatible = "xiaomi,miwifi-3a", "mediatek,mt7628an-soc";
 	model = "MiWiFi 3a";
 
+	chosen {
+		bootargs = "console=ttyS0,115200";
+	};
+
+	memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x4000000>;
+	};
+
 	aliases {
 		led-boot = &led_status_amber;
 		led-failsafe = &led_status_red;
 		led-running = &led_status_blue;
 		led-upgrade = &led_status_amber;
 		label-mac-device = &ethernet;
-	};
-
-	chosen {
-		bootargs = "console=ttyS0,115200";
-	};
-	
-	memory@0 {
-		device_type = "memory";
-		reg = <0x0 0x4000000>;
 	};
 
 	leds {
@@ -126,37 +126,6 @@ TARGET_DEVICES += miwifi-3a
 	};
 };
 
-&state_default {
-	gpio {
-		groups = "gpio", "refclk", "wdt", "wled_an";
-		function = "gpio";
-	};
-};
-
-&ehci {
-	status = "disabled";
-};
-
-&ohci {
-	status = "disabled";
-};
-
-&esw {
-	mediatek,portmap = <0x3e>;
-	mediatek,portdisable = <0x2a>;
-};
-
-&wmac {
-	status = "okay";
-
-	mediatek,mtd-eeprom = <&factory 0x0>;
-};
-
-&ethernet {
-	nvmem-cells = <&macaddr_factory_28>;
-	nvmem-cell-names = "mac-address";
-};
-
 &spi0 {
 	status = "okay";
 
@@ -165,45 +134,75 @@ TARGET_DEVICES += miwifi-3a
 		reg = <0>;
 		spi-max-frequency = <10000000>;
 
-		partitions {
-			compatible = "fixed-partitions";
-			#address-cells = <1>;
-			#size-cells = <1>;
+		partitions: partitions {
+             compatible = "fixed-partitions";
+             #address-cells = <1>;
+             #size-cells = <1>;
 
-			partition@0 {
-				label = "u-boot";
-				reg = <0x0 0x30000>;
-				read-only;
-			};
+             partition@0 {
+                 label = "u-boot";
+                 reg = <0x0 0x30000>;
+                 read-only;
+             };
 
-			partition@30000 {
-				label = "u-boot-env";
-				reg = <0x30000 0x10000>;
-			};
+             partition@30000 {
+                 label = "u-boot-env";
+                 reg = <0x30000 0x10000>;
+                 read-only;
+             };
 
-			factory: partition@40000 {
-				label = "factory";
-				reg = <0x40000 0x10000>;
-				read-only;
-			};
+             factory: partition@40000 {
+                 label = "factory";
+                 reg = <0x40000 0x10000>;
+                 read-only;
+             };
 
-			partition@50000 {
-				compatible = "denx,uimage";
-				label = "firmware";
-				reg = <0x50000 0xfb0000>;
-			};
+             partition@50000 {
+                 label = "firmware";
+                 reg = <0x50000 0xf80000>;            
+                 compatible = "denx,uimage";
+             };            
+            
+             /* additional partitions in DTS */
+             /* https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=5459952&extra=page%3D1&page=1 */
+         };
+	};
+};
+
+&pcie {
+	status = "okay";
+};
+
+&pcie0 {
+	wifi@0,0 {
+		compatible = "mediatek,mt76";
+		reg = <0x0000 0 0 0 0>;
+		mediatek,mtd-eeprom = <&factory 0x8000>;
+		ieee80211-freq-limit = <5000000 6000000>;
+	};
+};
+
+&pinctrl {
+	state_default: pinctrl0 {
+		gpio {
+			ralink,group = "gpio", "wdt", "wled_an";
+			ralink,function = "gpio";
 		};
 	};
 };
 
-&factory {
-	compatible = "nvmem-cells";
-	#address-cells = <1>;
-	#size-cells = <1>;
+&ethernet {
+	mtd-mac-address = <&factory 0x4>;
+	mtd-mac-address-increment = <(-1)>;
+};
 
-	macaddr_factory_28: macaddr@28 {
-		reg = <0x28 0x6>;
-	};
+&esw {
+	mediatek,portmap = <0x2f>;
+	mediatek,portdisable = <0x2a>;
+};
+
+&wmac {
+	status = "okay";
 };
 
 ```
