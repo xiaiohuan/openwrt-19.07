@@ -66,7 +66,7 @@ TARGET_DEVICES += miwifi-3a
 `MIWIFI-3A.dts`修改：
 
 ```shell
-
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 /dts-v1/;
 
 #include "mt7628an.dtsi"
@@ -79,16 +79,17 @@ TARGET_DEVICES += miwifi-3a
 	model = "MiWiFi 3a";
 
 	aliases {
-		led-boot = &led_blue;
-		led-failsafe = &led_blue;
-		led-running = &led_blue;
-		led-upgrade = &led_blue;
+		led-boot = &led_status_amber;
+		led-failsafe = &led_status_red;
+		led-running = &led_status_blue;
+		led-upgrade = &led_status_amber;
+		label-mac-device = &ethernet;
 	};
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
-
+	
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x4000000>;
@@ -97,16 +98,18 @@ TARGET_DEVICES += miwifi-3a
 	leds {
 		compatible = "gpio-leds";
 
-		led_blue: status_blue {
-			label = "miwifi-3a:blue:status";
+		led_status_blue: status_blue {
+			label = "blue:status";
 			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
-		status_red {
-			label = "miwifi-3a:red:status";
+
+		led_status_red: status_red {
+			label = "red:status";
 			gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
 		};
-		status_amber {
-			label = "miwifi-3a:amber:status";
+
+		led_status_amber: status_amber {
+			label = "amber:status";
 			gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -123,27 +126,41 @@ TARGET_DEVICES += miwifi-3a
 	};
 };
 
-&pinctrl {
-	state_default: pinctrl0 {
-		gpio {
-			ralink,group = "refclk", "wled_an", "gpio";
-			ralink,function = "gpio";
-		};
+&state_default {
+	gpio {
+		groups = "gpio", "refclk", "wdt", "wled_an";
+		function = "gpio";
 	};
+};
+
+&ehci {
+	status = "disabled";
+};
+
+&ohci {
+	status = "disabled";
+};
+
+&esw {
+	mediatek,portmap = <0x3e>;
+	mediatek,portdisable = <0x2a>;
 };
 
 &wmac {
 	status = "okay";
+
+	mediatek,mtd-eeprom = <&factory 0x0>;
 };
 
 &ethernet {
-	mtd-mac-address = <&factory 0x28>;
+	nvmem-cells = <&macaddr_factory_28>;
+	nvmem-cell-names = "mac-address";
 };
 
 &spi0 {
 	status = "okay";
 
-	m25p80@0 {
+	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <10000000>;
@@ -162,7 +179,6 @@ TARGET_DEVICES += miwifi-3a
 			partition@30000 {
 				label = "u-boot-env";
 				reg = <0x30000 0x10000>;
-				read-only;
 			};
 
 			factory: partition@40000 {
@@ -180,46 +196,30 @@ TARGET_DEVICES += miwifi-3a
 	};
 };
 
+&factory {
+	compatible = "nvmem-cells";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	macaddr_factory_28: macaddr@28 {
+		reg = <0x28 0x6>;
+	};
+};
+
 ```
 
  
  
- ## 官方声明
- 
- 
- ```
-  _______                     ________        __
- |       |.-----.-----.-----.|  |  |  |.----.|  |_
- |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
- |_______||   __|_____|__|__||________||__|  |____|
-          |__| W I R E L E S S   F R E E D O M
- -----------------------------------------------------
-```
-This is the buildsystem for the OpenWrt Linux distribution.
+ ### 捐贈
 
-To build your own firmware you need a Linux, BSD or MacOSX system (case
-sensitive filesystem required). Cygwin is unsupported because of the lack
-of a case sensitive file system.
+***
+<center><b>如果你觉得此项目对你有帮助，可以捐助我，用爱发电也挺难的，哈哈。</b></center>
 
-You need gcc, binutils, bzip2, flex, python, perl, make, find, grep, diff,
-unzip, gawk, getopt, subversion, libz-dev and libc headers installed.
+|  微信   | 支付宝  |
+|  ----  | ----  |
+| ![](https://pic.imgdb.cn/item/62502707239250f7c5b8ac3d.png) | ![](https://pic.imgdb.cn/item/62502707239250f7c5b8ac36.png) |
 
-1. Run "./scripts/feeds update -a" to obtain all the latest package definitions
-defined in feeds.conf / feeds.conf.default
+## 赞助名单
 
-2. Run "./scripts/feeds install -a" to install symlinks for all obtained
-packages into package/feeds/
-
-3. Run "make menuconfig" to select your preferred configuration for the
-toolchain, target system & firmware packages.
-
-4. Run "make" to build your firmware. This will download all sources, build
-the cross-compile toolchain and then cross-compile the Linux kernel & all
-chosen applications for your target system.
-
-Sunshine!
-	Your OpenWrt Community
-	http://www.openwrt.org
-
-
-
+![](https://pic.imgdb.cn/item/625028c0239250f7c5bd102b.jpg)
+感谢以上大佬的充电！
