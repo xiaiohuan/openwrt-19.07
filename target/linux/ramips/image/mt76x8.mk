@@ -128,7 +128,7 @@ TARGET_DEVICES += miwifi-4c
 
 define Device/miwifi-3a
   DTS := MIWIFI-3A
-  IMAGE_SIZE := 15104k
+  IMAGE_SIZE := 14976k
   DEVICE_TITLE := Xiaomi MiWiFi 3a
   DEVICE_PACKAGES := kmod-mt76x2
 endef
