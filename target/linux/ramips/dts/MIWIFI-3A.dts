@@ -13,7 +13,7 @@
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
-
+    /*内存大小64M*/
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x4000000>;
@@ -65,7 +65,7 @@
 		compatible = "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <10000000>;
-
+		/*闪存大小16M*/
 		partitions: partitions {
              compatible = "fixed-partitions";
              #address-cells = <1>;
@@ -100,7 +100,8 @@
          };
 	};
 };
-
+/*以上均已测试通过，勿修改*/
+/*5g WIFI*/
 &pcie {
 	status = "okay";
 };
@@ -113,7 +114,9 @@
 		ieee80211-freq-limit = <5000000 6000000>;
 	};
 };
+/*5g WIFI*/
 
+/*总线*/
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
@@ -122,16 +125,21 @@
 		};
 	};
 };
+/*总线*/
 
+/*MAC地址获取地址*/
 &ethernet {
 	mtd-mac-address = <&factory 0x28>;
 };
+/*MAC地址获取地址*/
 
 &esw {
 	mediatek,portmap = <0x3e>;
 	mediatek,portdisable = <0x2a>;
 };
 
+/*wan口默认启用*/
 &wmac {
 	status = "okay";
 };
+/*wan口默认启用*/
