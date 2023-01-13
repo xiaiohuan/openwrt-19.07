@@ -10,10 +10,10 @@
 	model = "MiWiFi 4c";
 
 	aliases {
-		led-boot = &led_blue;
-		led-failsafe = &led_blue;
+		led-boot = &led_amber;
+		led-failsafe = &led_red;
 		led-running = &led_blue;
-		led-upgrade = &led_blue;
+		led-upgrade = &led_amber;
 	};
 
 	chosen {
@@ -32,11 +32,11 @@
 			label = "miwifi-4c:blue:status";
 			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
-		status_red {
+		led_red: status_red {
 			label = "miwifi-4C:red:status";
 			gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
 		};
-		status_amber {
+		led_amber: status_amber {
 			label = "miwifi-4C:amber:status";
 			gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 		};
