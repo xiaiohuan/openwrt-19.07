@@ -111,6 +111,8 @@
 		compatible = "mediatek,mt76";
 		reg = <0x0000 0 0 0 0>;
 		mediatek,mtd-eeprom = <&factory 0x8000>;
+		mtd-mac-address = <&factory 0x2e>;
+		/*从 HC5861B.dts 抄写的，希望有用，第四次测试*/
 		ieee80211-freq-limit = <5000000 6000000>;
 	};
 };
@@ -134,7 +136,8 @@
 /*MAC地址获取地址*/
 
 &esw {
-	mediatek,portmap = <0x3e>;
+	mediatek,portmap = <0x2f>;
+	/*从 4A-100M.dts 抄写的，希望有用，第四次测试*/
 	mediatek,portdisable = <0x2a>;
 };
 
