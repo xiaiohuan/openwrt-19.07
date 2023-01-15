@@ -283,7 +283,7 @@ ramips_board_detect() {
 	*"MiniEMBPlug")
 		name="miniembplug"
 		;;
-	*"MiniEMBWiFi")
+	*"MiniEMBWiFi")mi
 		name="miniembwifi"
 		;;
 	*"MiWiFi Mini")
@@ -294,6 +294,12 @@ ramips_board_detect() {
 		;;
 	*"MiWiFi 4c")
 		name="miwifi-4c"
+		;;
+	*"MiWiFi R3")
+		name="miwifi-r3"
+		;;
+	*"MiWiFi R3mi")
+		name="miwifi-r3mi"
 		;;
 	*"MiWiFi 3a")
 		name="miwifi-3a"
