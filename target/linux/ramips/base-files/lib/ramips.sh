@@ -298,6 +298,9 @@ ramips_board_detect() {
 	*"MiWiFi 3a")
 		name="miwifi-3a"
 		;;
+	*"MiWiFi 3c")
+		name="miwifi-3c"
+		;;
 	*"MLW221")
 		name="mlw221"
 		;;

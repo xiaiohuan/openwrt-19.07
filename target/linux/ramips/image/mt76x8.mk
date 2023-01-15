@@ -134,6 +134,14 @@ define Device/miwifi-3a
 endef
 TARGET_DEVICES += miwifi-3a
 
+define Device/miwifi-3c
+  DTS := MIWIFI-3C
+  IMAGE_SIZE := 14976k
+  DEVICE_TITLE := Xiaomi MiWiFi 3c
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += miwifi-3c
+
 define Device/mt7628
   DTS := MT7628
   BLOCKSIZE := 64k
