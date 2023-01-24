@@ -694,6 +694,10 @@ ramips_setup_macs()
 		lan_mac=$(mtd_get_mac_binary factory 4)
 		wan_mac=$(mtd_get_mac_binary factory 40)
 		;;
+	xiaomi,miwifi-r3)
+		wan_mac=$(mtd_get_mac_binary factory 0x28)
+		lan_mac=$(macaddr_setbit_la "$wan_mac")
+		;;
 	wlr-6000)
 		wan_mac=$(macaddr_add "$(mtd_get_mac_binary factory 32772)" 2)
 		;;
