@@ -2370,4 +2370,4 @@ Subject: [PATCH] mtd ralink add mt7620-nand driver
 +
 +
 +
- #endif
++#endif

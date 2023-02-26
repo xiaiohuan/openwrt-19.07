@@ -14,4 +14,6 @@ endef
 define Profile/Default/Description
 	Default package set compatible with most boards.
 endef
+Default_UBIFS_OPTS:="-m 2048 -e 124KiB -c 1024"
+Default_UBI_OPTS:="-m 2048 -p 128KiB -s 2048"
 $(eval $(call Profile,Default))
