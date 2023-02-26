@@ -16,7 +16,7 @@ Subject: [PATCH 1/2] Support MiWifi-R3
  target/linux/ramips/rt3883/config-5.4         |    1 +
  10 files changed, 2598 insertions(+), 1 deletion(-)
  create mode 100644 target/linux/ramips/dts/mt7620a_xiaomi_miwifi-r3.dts
- create mode 100644 target/linux/ramips/patches-5.4/0038-mtd-ralink-add-mt7620-nand-driver.patch
+ create mode 100644 target/linux/ramips/patches-4.14/0038-mtd-ralink-add-mt7620-nand-driver.patch
 
 diff --git a/package/boot/uboot-envtools/files/ramips b/package/boot/uboot-envtools/files/ramips
 index 0de062b..f7e1856 100644
@@ -343,11 +343,11 @@ index 5fc61e4..ce992fc 100644
  CPU_TYPE:=24kc
  
  DEFAULT_PACKAGES += kmod-rt2800-soc wpad-basic-wolfssl swconfig
-diff --git a/target/linux/ramips/patches-5.4/0038-mtd-ralink-add-mt7620-nand-driver.patch b/target/linux/ramips/patches-5.4/0038-mtd-ralink-add-mt7620-nand-driver.patch
+diff --git a/target/linux/ramips/patches-4.14/0038-mtd-ralink-add-mt7620-nand-driver.patch b/target/linux/ramips/patches-4.14/0038-mtd-ralink-add-mt7620-nand-driver.patch
 new file mode 100644
 index 0000000..07fafef
 --- /dev/null
-+++ b/target/linux/ramips/patches-5.4/0038-mtd-ralink-add-mt7620-nand-driver.patch
++++ b/target/linux/ramips/patches-4.14/0038-mtd-ralink-add-mt7620-nand-driver.patch
 @@ -0,0 +1,2373 @@
 +From afb07a5b467217af1df4162c707cbe554a79130d Mon Sep 17 00:00:00 2001
 +From: Chen Minqiang <ptpt52@gmail.com>
