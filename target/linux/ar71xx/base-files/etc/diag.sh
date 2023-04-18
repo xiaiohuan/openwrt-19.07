@@ -495,9 +495,6 @@ get_status_led() {
 	tl-wdr6500-v2)
 		status_led="tp-link:white:system"
 		;;
-	tl-wdr5600-v1)
-		status_led="tp-link:white:system"
-		;;
 	tube2h)
 		status_led="alfa:green:signal4"
 		;;
