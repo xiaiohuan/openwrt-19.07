@@ -470,7 +470,7 @@ TARGET_DEVICES += miwifi-mini
 define Device/miwifi-r3mi
   DTS := MIWIFI-R3MI
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
-  DEVICE_TITLE := Xiaomi MiWiFi R3MI
+  DEVICE_TITLE := Xiaomi MiWiFi R3mi
   DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci
 endef
 TARGET_DEVICES += miwifi-R3MI
