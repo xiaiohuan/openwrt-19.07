@@ -473,7 +473,7 @@ define Device/miwifi-r3mi
   DEVICE_TITLE := Xiaomi MiWiFi R3mi
   DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci
 endef
-TARGET_DEVICES += miwifi-R3MI
+TARGET_DEVICES += miwifi-r3mi
 
 define Device/mlw221
   DTS := MLW221
