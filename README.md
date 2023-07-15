@@ -1,3 +1,17 @@
+ ## 捐贈
+
+***
+<center><b>如果你觉得此项目对你有帮助，可以捐助我，用爱发电也挺难的，哈哈。</b></center>
+
+|  微信   | 支付宝  |
+|  ----  | ----  |
+| ![](http://image.yuos.top/image/202307132329175.png) | ![](http://image.yuos.top/image/202307132333168.png) |
+
+## 赞助名单
+
+![](https://pic.imgdb.cn/item/625028c0239250f7c5bd102b.jpg)
+感谢以上大佬的充电！
+
 ## 拉取
 
 1. 下载源代码，更新 feeds 并选择配置
@@ -206,19 +220,3 @@ TARGET_DEVICES += miwifi-3a
 };
 
 ```
-
- 
- 
- ### 捐贈
-
-***
-<center><b>如果你觉得此项目对你有帮助，可以捐助我，用爱发电也挺难的，哈哈。</b></center>
-
-|  微信   | 支付宝  |
-|  ----  | ----  |
-| ![](https://github.com/yuos-bit/other/releases/download/Openwrt/wechat.png) | ![](https://github.com/yuos-bit/other/releases/download/Openwrt/alipay.png) |
-
-## 赞助名单
-
-![](https://pic.imgdb.cn/item/625028c0239250f7c5bd102b.jpg)
-感谢以上大佬的充电！
