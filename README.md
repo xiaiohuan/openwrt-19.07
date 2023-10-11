@@ -20,7 +20,7 @@
 ```bash
 git clone --depth=1 https://github.com/yuos-bit/openwrt-19.07
 # 拉取最新分支
-git clone -b xiaomi --single-branch https://github.com/yuos-bit/openwrt-19.07
+git clone -b xiaomi --single-branch https://github.com/xiaiohuan/openwrt-19.07/tree/xiaomi
 # 拉取小米适配分支
   
 cd openwrt-19.07
